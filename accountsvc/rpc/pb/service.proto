@@ -1,0 +1,24 @@
+syntax = "proto3";
+package pb;
+import "msg.proto";
+
+service Account {
+  // Account management 
+  rpc RegisterLocalAccount(RegisterLocalAccountReq) returns (RegisterLocalAccountRsp){};
+  rpc RegisterLDAPAccount(RegisterLDAPAccountReq) returns (RegisterLDAPAccountRsp){};
+  rpc UnRegisterAccount(UnRegisterAccountReq) returns (UnRegisterAccountRsp);
+  rpc GetAccountInfo(GetAccountInfoReq) returns (GetAccountInfoRsp){};
+  rpc GetAccountCount(GetAccountCountReq) returns (GetAccountCountRsp){};
+  rpc GetAccountList(GetAccountListReq) returns (GetAccountListRsp){};
+  // Session Management
+  rpc Login(LoginReq) returns (LoginRsp){};
+  rpc Logout(LogoutReq) returns (LogoutRsp){};
+  rpc GetSessionInfo(GetSessionInfoReq) returns (GetSessionInfoRsp){};
+  rpc SetSessionUserData(SetSessionUserDataReq) returns (SetSessionUserDataRsp){};
+  rpc GetSessionUserData(GetSessionUserDataReq) returns (GetSessionUserDataRsp){};
+  // App management
+  rpc RegisterApp(RegisterAppReq) returns (RegisterAppRsp){};
+  rpc UnRegisterApp(UnRegisterAppReq) returns (UnRegisterAppRsp){};
+}
+
+

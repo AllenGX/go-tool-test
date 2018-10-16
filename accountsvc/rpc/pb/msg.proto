@@ -1,0 +1,134 @@
+
+syntax = "proto3";
+package pb;
+
+message CommonReq {
+  string app_id = 1;
+  string token = 2;
+}
+
+message CommonRsp {
+  bool success = 1;
+  string message = 2;
+}
+
+
+message AccountInfo {
+  string id = 1;
+  string domain = 2;  // for local account, domain = 'local'
+  string user_name = 3;
+  string email = 4;
+  string display_name = 5;
+}
+
+
+message SetSessionUserDataRsp { CommonRsp common = 1; }
+
+message GetSessionUserDataReq { CommonReq common = 1; }
+
+message GetSessionUserDataRsp {
+  CommonRsp common = 1;
+  string user_data = 2;
+}
+
+
+message LoginReq {
+  CommonReq common = 1;
+  string user_name = 2;
+  string password = 3;
+}
+
+message LoginRsp {
+  CommonRsp common = 1;
+  string token = 2;
+}
+
+message LogoutReq { CommonReq common = 1; }
+
+message LogoutRsp { CommonRsp common = 1; }
+
+message GetSessionInfoReq { CommonReq common = 1; }
+
+message GetSessionInfoRsp {
+  CommonRsp common = 1;
+  AccountInfo account_info = 2;
+}
+
+message SetSessionUserDataReq {
+  CommonReq common = 1;
+  string user_data = 2;
+}
+
+message RegisterAppReq {
+  CommonReq common = 1;
+  string app_name = 2;
+  string app_redirect_id = 3;
+}
+
+message RegisterAppRsp { CommonRsp common = 1; }
+
+message UnRegisterAppReq { CommonReq common = 1; }
+
+message UnRegisterAppRsp { CommonRsp common = 1; }
+
+
+message RegisterLDAPAccountReq {
+  CommonReq common = 1;
+  string email = 2;
+}
+
+message RegisterLDAPAccountRsp {
+  CommonRsp common = 1;
+  string account_id = 2;
+}
+
+message RegisterLocalAccountReq {
+  CommonReq common = 1;
+  string email = 2;
+  string user_name = 3;
+  string display_name = 4;
+  string password = 5;
+}
+
+message RegisterLocalAccountRsp {
+  CommonRsp common = 1;
+  string account_id = 2;
+}
+
+message UnRegisterAccountReq {
+  CommonReq common = 1;
+  string account_id = 2;
+}
+
+message UnRegisterAccountRsp { CommonRsp common = 1; }
+
+message GetAccountInfoReq {
+  CommonReq common = 1;
+  string account_id = 2;
+}
+
+
+message GetAccountInfoRsp {
+  CommonRsp common = 1;
+  AccountInfo account_info = 2;
+}
+
+message GetAccountCountReq { 
+  CommonReq common = 1;
+}
+
+message GetAccountCountRsp {
+  CommonRsp common = 1;
+  int32 count = 2;
+}
+
+message GetAccountListReq { 
+  CommonReq common = 1;
+  int32 start_index = 2;
+  int32 count = 3; // count <= 0 means get all accounts after start_index
+}
+
+message GetAccountListRsp {
+  CommonRsp common = 1;
+  repeated AccountInfo account_info_list = 2;
+}

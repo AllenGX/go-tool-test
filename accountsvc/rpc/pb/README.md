@@ -1,0 +1,1 @@
+truss --svcout ../ service.proto msg.proto
